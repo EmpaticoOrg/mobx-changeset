@@ -1,5 +1,5 @@
 {
-  "name": "mobx-validations",
+  "name": "mobx-changeset",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.main.js",
@@ -10,14 +10,15 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn clean && yarn compile && rollup -c && cp lib/*.d.ts dist",
-    "compile": "yarn tsc",
+    "compile": "yarn tscqqqq",
     "problems": "yarn lint && yarn tsc  --noEmit",
     "lint": "tslint -c tslint.json \"src/**/*.ts\"",
     "clean": "rm -rf dist",
     "test": "jest"
   },
   "devDependencies": {
-    "@types/jest": "^21.1.8",
+    "@types/jest": "^22.0.0",
+    "@types/lodash-es": "^4.17.0",
     "jest": "^21.2.1",
     "rollup": "^0.51.8",
     "rollup-plugin-commonjs": "^8.2.6",
@@ -29,12 +30,16 @@
     "typescript": "^2.6.1"
   },
   "dependencies": {
+    "lodash-es": "^4.17.4",
     "mobx": "^3.3.2"
   },
   "jest": {
     "transform": {
-      "^.+\\.ts?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "^.+\\.(j|t)s?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!lodash-es/.*)"
+    ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js?|ts?)$",
     "moduleFileExtensions": [
       "ts",
